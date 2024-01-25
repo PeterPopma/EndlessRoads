@@ -1,0 +1,196 @@
+{
+    "name": "CameraInput",
+    "maps": [
+        {
+            "name": "CameraActions",
+            "id": "f33bc4d9-a563-4559-a873-69a54ee1c962",
+            "actions": [
+                {
+                    "name": "ScreenLeft",
+                    "type": "Value",
+                    "id": "12c4956c-18bc-47ab-a3bd-b9660291e07a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ScreenRight",
+                    "type": "Value",
+                    "id": "67b96b6a-c3e0-4b91-847e-9ab30ac8ca8e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ScreenUp",
+                    "type": "Value",
+                    "id": "da44c189-1f9b-485b-bb84-aa06ef417390",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ScreenDown",
+                    "type": "Value",
+                    "id": "040fc6c7-a670-447d-8d93-4da22cda0b65",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ZoomIn",
+                    "type": "Value",
+                    "id": "f4edb276-126c-4971-8cfe-55328b530aa6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ZoomOut",
+                    "type": "Value",
+                    "id": "98a9e8a0-80e0-48a9-8914-0595757d83d4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "IncreaseAngleX",
+                    "type": "Value",
+                    "id": "bd99ad77-ae0f-4b51-acd0-95e622a3bde6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "DecreaseAngleX",
+                    "type": "Value",
+                    "id": "0f13ff3c-4fb7-458a-9983-d13517d9c728",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a910743b-100b-4798-87ff-0726cf4b484a",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScreenLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8eb8aa5d-8a18-4437-a80b-ec578c95a6a8",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScreenRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f64d0b0d-53ba-451b-953d-243c6f22014b",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScreenUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bed4a853-5600-4a2c-b0d7-943da580e611",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScreenDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0868e2d1-525e-4407-ae9b-e0c4a47d6de3",
+                    "path": "<Keyboard>/equals",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomIn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cbd4412-2659-4365-92d4-e005dd53a9ff",
+                    "path": "<Keyboard>/numpadPlus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomIn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b100094-25bf-4669-9aea-e1fbfae1a50e",
+                    "path": "<Keyboard>/minus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomOut",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "563fc8c7-9ca6-409e-bc2c-2582de0b2b3b",
+                    "path": "<Keyboard>/numpadMinus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomOut",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "99023197-9964-41aa-8327-f88b62e7b199",
+                    "path": "<Keyboard>/pageUp",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseAngleX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27a07b47-944b-464c-bf77-cdc482990b1e",
+                    "path": "<Keyboard>/pageDown",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseAngleX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
