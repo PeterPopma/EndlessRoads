@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
+    const float MAX_MOVEMENT_SPEED = 1000;
     bool moveScreenLeft;
     bool moveScreenRight;
     bool moveScreenUp;
@@ -14,10 +16,10 @@ public class CameraController : MonoBehaviour
     bool increaseAngleX;
     bool decreaseAngleX;
     new Camera camera;
-    private float timeMovingStarted;
     private float cameraAngleX = 60;
     private float cameraAngleY = 0;
     private float cameraHeight = 20;
+    private Vector2 moveSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -30,27 +32,24 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveSpeed = 24f * Mathf.Pow(3, (Time.time - timeMovingStarted));
-        if (moveSpeed>2000f)
+        if (moveScreenLeft || moveScreenRight)
         {
-            moveSpeed = 2000f;
+            moveSpeed.x = IncreaseMoveSpeed(moveSpeed.x);
         }
-        if (moveScreenLeft)
+        else
         {
-            camera.transform.position -= new Vector3(Time.deltaTime * moveSpeed, 0, 0);
+            moveSpeed.x = DecreaseMoveSpeed(moveSpeed.x);
         }
-        if (moveScreenRight)
+        if (moveScreenUp || moveScreenDown)
         {
-            camera.transform.position += new Vector3(Time.deltaTime * moveSpeed, 0, 0);
+            moveSpeed.y = IncreaseMoveSpeed(moveSpeed.y);
         }
-        if (moveScreenUp)
+        else
         {
-            camera.transform.position += new Vector3(0, 0, Time.deltaTime * moveSpeed);
+            moveSpeed.y = DecreaseMoveSpeed(moveSpeed.y);
         }
-        if (moveScreenDown)
-        {
-            camera.transform.position -= new Vector3(0, 0, Time.deltaTime * moveSpeed);
-        }
+        camera.transform.position -= new Vector3(Time.deltaTime * moveSpeed.x, 0, Time.deltaTime * moveSpeed.y);
+
         if (increaseAngleX && cameraAngleX < 89)
         {
             cameraAngleX += 40 * Time.deltaTime;
@@ -65,7 +64,7 @@ public class CameraController : MonoBehaviour
         {
             if (cameraHeight > 0.5f)
             {
-                cameraHeight -= Time.deltaTime * 10f;
+                cameraHeight -= Time.deltaTime * 30f;
                 camera.transform.position = new Vector3(camera.transform.position.x, cameraHeight, camera.transform.position.z);
             }
         }
@@ -73,34 +72,91 @@ public class CameraController : MonoBehaviour
         {
             if (cameraHeight < 300)
             {
-                cameraHeight += Time.deltaTime * 10f;
+                cameraHeight += Time.deltaTime * 30f;
                 camera.transform.position = new Vector3(camera.transform.position.x, cameraHeight, camera.transform.position.z);
             }
         }
     }
 
+    private float IncreaseMoveSpeed(float moveSpeed)
+    {
+        if (moveSpeed > -MAX_MOVEMENT_SPEED && moveSpeed < MAX_MOVEMENT_SPEED)
+        {
+            moveSpeed *= 1.01f;
+        }
+
+        return moveSpeed;
+    }
+
+    private float DecreaseMoveSpeed(float moveSpeed)
+    {
+        moveSpeed *= 0.99f;
+
+        return moveSpeed;
+    }
+
     public void OnScreenLeft(InputValue value)
     {
-        timeMovingStarted = Time.time;
-        moveScreenLeft = value.isPressed;
+        if (value.isPressed)
+        {
+            if (!moveScreenRight)
+            {
+                moveScreenLeft = true;
+                moveSpeed.x = 10;
+            }
+        }
+        else
+        {
+            moveScreenLeft = false;
+        }
     }
 
     public void OnScreenRight(InputValue value)
     {
-        timeMovingStarted = Time.time;
-        moveScreenRight = value.isPressed;
+        if (value.isPressed)
+        {
+            if (!moveScreenLeft)
+            {
+                moveScreenRight = true;
+                moveSpeed.x = -10;
+            }
+        }
+        else
+        {
+            moveScreenRight = false;
+        }
     }
 
     public void OnScreenUp(InputValue value)
     {
-        timeMovingStarted = Time.time;
-        moveScreenUp = value.isPressed;
+        if (value.isPressed)
+        {
+            if (!moveScreenDown)
+            {
+                moveScreenUp = true;
+                moveSpeed.y = -10;
+            }
+        }
+        else
+        {
+            moveScreenUp = false;
+        }
     }
 
     public void OnScreenDown(InputValue value)
     {
-        timeMovingStarted = Time.time;
-        moveScreenDown = value.isPressed;
+        if (value.isPressed)
+        {
+            if (!moveScreenUp)
+            {
+                moveScreenDown = true;
+                moveSpeed.y = 10;
+            }
+        }
+        else
+        {
+            moveScreenDown = false;
+        }
     }
 
     public void OnZoomIn(InputValue value)
